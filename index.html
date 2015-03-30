@@ -30,7 +30,7 @@ form {
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-var color = d3.scale.category20c();
+var color = d3.rgb();
 var treemap = d3.layout.treemap()
     .size([width, height])
     .sticky(true)
@@ -47,7 +47,7 @@ d3.csv("coffee.csv", function(root) {
     .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return "rgb("+ d.sales+",100,100)";})// d.region ? color(d.sales) : null; })
+      .style("background", function(d) { return color(d.profit,100,100);})// d.region ? color(d.sales) : null; })
       .text(function(d) { return d.region ? null : d.sales; });
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "count"
