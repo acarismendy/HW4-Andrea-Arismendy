@@ -43,7 +43,7 @@
       d3.selectAll("input").on("change", function change() {
       var value = this.value === "count"
         ? function() { return 1; }
-        : function(d) { return d.profit; };
+        : function(d) { return d.profit; console.log(color(d.state)); };
 
       node
       .data(treemap.value(value).nodes)
