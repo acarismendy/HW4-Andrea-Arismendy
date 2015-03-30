@@ -36,18 +36,18 @@ var treemap = d3.layout.treemap()
     .sticky(true)
     .value(function(d) { return d.profit; });
 var div = d3.select("body").append("div")
-    .style("position", "relative")
+    //.style("position", "relative")
     .style("width", (width + margin.left + margin.right) + "px")
     .style("height", (height + margin.top + margin.bottom) + "px")
     .style("left", margin.left + "px")
     .style("top", margin.top + "px");
-d3.csv("coffee.csv", function(error, root) {
+d3.csv("coffee.csv", function(root) {
   var node = div.datum(root).selectAll(".node")
       .data(treemap.nodes)
     .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return d.region ? color(d.sales) : null; })
+      .style("background", function(d) { return "black";})// d.region ? color(d.sales) : null; })
       .text(function(d) { return d.region ? null : d.sales; });
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "count"
