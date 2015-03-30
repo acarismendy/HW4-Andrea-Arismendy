@@ -23,7 +23,7 @@
     var treemap = d3.layout.treemap()
     .size([width, height])
     .sticky(true)
-    .value(function(d) { return d.size; });
+    .value(function(d) { return d.profit; });
     
     var division=d3.select("body").append("div")
     .style("position", "relative")
@@ -38,12 +38,12 @@
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return d.children ? color(d.name) : null; })
-      .text(function(d) { return d.children ? null : d.name; });
+      .style("background", function(d) { return d.region ? color(d.state) : null; })
+      .text(function(d) { return d.region ? null : d.state; });
       d3.selectAll("input").on("change", function change() {
       var value = this.value === "count"
         ? function() { return 1; }
-        : function(d) { return d.size; };
+        : function(d) { return d.profit; };
 
       node
       .data(treemap.value(value).nodes)
