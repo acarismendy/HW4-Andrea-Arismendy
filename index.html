@@ -25,7 +25,7 @@
     var treemap = d3.layout.treemap()
     .size([width, height])
     .sticky(true)
-    .value(function(d) { return d.profit; });
+    .value(function(d) { return d.profit; console.log(d.profit);});
     
     var division=d3.select("body").append("div")
     .style("position", "relative")
