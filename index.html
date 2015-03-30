@@ -32,7 +32,7 @@
     .style("left", margin.left + "px")
     .style("top", margin.top + "px");
     
-    d3.csv("https://hivelab.org/static/coffee.csv",function(data){
+    d3.csv("coffee.csv",function(data){
       var node = division.datum(data).selectAll(".node")
       .data(treemap.nodes)
       .enter().append("div")
