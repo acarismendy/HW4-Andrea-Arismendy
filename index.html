@@ -43,11 +43,7 @@
       .style("background", function(d) { return d.region ? color(d.state) : null; })
       .text(function(d) { return d.region ? null : d.state; });
      
-      node
-      .data(treemap.value(value).nodes)
-      .transition()
-      .duration(1500)
-      .call(position);
+
     });
     
     function position() {
