@@ -59,7 +59,7 @@ d3.csv("coffee.csv", function(root) {
         .duration(1500)
         .call(position);
   });
-  console.log(root.date);
+  console.log(root);
 });
 function position() {
   this.style("left", function(d) { return d.x + "px"; })
