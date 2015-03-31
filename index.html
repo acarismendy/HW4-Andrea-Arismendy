@@ -47,9 +47,9 @@ d3.csv("coffee.csv", function(root) {
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
       .rollup(function(leaves){
-        d3.sum(leaves,function(d){
+        return {"profit":d3.sum(leaves,function(d){
           return parseFloat(d.profit);
-        })
+        })};
       })
       .entries(root);
       console.log(nest);
