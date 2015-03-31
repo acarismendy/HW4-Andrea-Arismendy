@@ -55,8 +55,8 @@ d3.csv("coffee.csv", function(root) {
       .sticky(true)
       .value(function(d) { return nest.profit; });
   var node = div.datum(nest).selectAll(".node")
-      .data(treemap.nodes
-    .enter().append("div")
+      .data(treemap.nodes)
+      .enter().append("div")
       .attr("class", "node")
       .call(position)
       .style("background", function(d) { return  d.region ? color(d.profit) : null; })
