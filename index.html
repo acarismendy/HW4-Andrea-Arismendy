@@ -46,6 +46,11 @@ d3.csv("coffee.csv", function(root) {
   var nest=d3.nest()
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
+      .rollup(function(leaves){
+        d3.sum(leaves,function(d){
+          return parseFloat(d.profit);
+        })
+      })
       .entries(root);
       console.log(nest);
   var node = div.datum(nest).selectAll(".node")
