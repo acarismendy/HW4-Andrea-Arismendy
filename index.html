@@ -53,7 +53,9 @@ d3.csv("coffee.csv", function(root) {
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
+      .nodes(nest)
       .value(function(d) { return d.profit; });
+      
   var node = div.datum(nest).selectAll(".node")
       .data(treemap.nodes(nest))
       .enter().append("div")
@@ -62,7 +64,7 @@ d3.csv("coffee.csv", function(root) {
       .style("background", function(d) { return  d.key ? color(d.values.values.profit) : null; })
       .text(function(d) { return d.key ? null : d.values.values.profit; });
       console.log(node);
-      console.log(nest[0].values[0].values.profit);
+      console.log(treemap);
 //  d3.selectAll("input").on("change", function change() {
 //    var value = this.value === "count"
 //        ? function() { return 1; }
