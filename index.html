@@ -55,14 +55,14 @@ d3.csv("coffee.csv", function(root) {
       .sticky(true)
       .value(function(d) { return nest.profit; });
   var node = div.datum(nest).selectAll(".node")
-      .nodes(nest)
+      .data(treemap.nodes)
       .enter().append("div")
       .attr("class", "node")
       .call(position)
       .style("background", function(d) { return  d.key ? color(d.profit) : null; })
       .text(function(d) { return d.key ? null : d.profit; });
       console.log(node);
-      console.log(nest.key);
+      console.log(nest.profit);
 //  d3.selectAll("input").on("change", function change() {
 //    var value = this.value === "count"
 //        ? function() { return 1; }
