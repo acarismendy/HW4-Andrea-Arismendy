@@ -41,8 +41,14 @@ var div = d3.select("body").append("div")
     .style("height", (height + margin.top + margin.bottom) + "px")
     .style("left", margin.left + "px")
     .style("top", margin.top + "px");
+  
 d3.csv("coffee.csv", function(root) {
-  var node = div.datum(root).selectAll(".node")
+  var nest=d3.nest()
+      .key(function(d){return d.region;})
+      .key(function(d){return d.state;})
+      .entries(root);
+      console.log(nest);
+  var node = div.datum(nest).selectAll(".node")
       .data(treemap.nodes)
     .enter().append("div")
       .attr("class", "node")
