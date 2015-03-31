@@ -21,10 +21,10 @@ form {
   text-indent: 2px;
 }
 </style>
-<!--<form>
+<form>
   <label><input type="radio" name="mode" value="size" checked> Size</label>
   <label><input type="radio" name="mode" value="count"> Count</label>
-</form>-->
+</form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
@@ -56,7 +56,7 @@ d3.csv("coffee.csv", function(root) {
       .nodes(nest);
      // .value(function(d) { return d.profit; });
       
-  var node = div.selectAll(".node")
+  var node = div.datum(nest).selectAll(".node")
       .data(treemap)
       .enter().append("div")
       .attr("class", "node")
@@ -65,16 +65,16 @@ d3.csv("coffee.csv", function(root) {
       .text(function(d) { return d.key ? null : d.values.values.profit; });
       console.log(node);
       console.log(treemap);
-//  d3.selectAll("input").on("change", function change() {
-//    var value = this.value === "count"
-//        ? function() { return 1; }
-//        : function(d) { return d.profit; };
-//    node
-//        .data(treemap.value(value).nodes)
-//      .transition()
-//        .duration(1500)
-//        .call(position);
-//  });
+  d3.selectAll("input").on("change", function change() {
+    var value = this.value === "count"
+        ? function() { return 1; }
+        : function(d) { return d.profit; };
+    node
+        .data(treemap.value(value).nodes)
+      .transition()
+        .duration(1500)
+        .call(position);
+  });
  
 });
 function position() {
