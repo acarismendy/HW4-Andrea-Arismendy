@@ -71,6 +71,8 @@ d3.csv("coffee.csv", function(root) {
         : function(d) { return d.profit; };
     node
         .data(treemap.value(value).nodes)
+        .transition()
+-        .duration(1500)
         .call(position);
   });
  
