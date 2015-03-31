@@ -21,20 +21,17 @@ form {
   text-indent: 2px;
 }
 </style>
-<form>
+<!--<form>
   <label><input type="radio" name="mode" value="size" checked> Size</label>
   <label><input type="radio" name="mode" value="count"> Count</label>
-</form>
+</form>-->
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 var color = d3.rgb();
-var treemap = d3.layout.treemap()
-    .size([width, height])
-    .sticky(true)
-    .value(function(d) { return d.profit; });
+
 var div = d3.select("body").append("div")
     //.style("position", "relative")
     .style("width", (width + margin.left + margin.right) + "px")
@@ -53,6 +50,10 @@ d3.csv("coffee.csv", function(root) {
       })
       .entries(root);
       console.log(nest);
+  var treemap = d3.layout.treemap()
+      .size([width, height])
+      .sticky(true)
+      .value(function(d) { return nest.profit; });
   var node = div.datum(nest).selectAll(".node")
       .data(treemap.nodes)
     .enter().append("div")
@@ -60,16 +61,17 @@ d3.csv("coffee.csv", function(root) {
       .call(position)
       .style("background", function(d) { return  d.region ? color(d.sales) : null; })
       .text(function(d) { return d.region ? null : d.sales; });
-  d3.selectAll("input").on("change", function change() {
-    var value = this.value === "count"
-        ? function() { return 1; }
-        : function(d) { return d.profit; };
-    node
-        .data(treemap.value(value).nodes)
-      .transition()
-        .duration(1500)
-        .call(position);
-  });
+      console.log(node);
+//  d3.selectAll("input").on("change", function change() {
+//    var value = this.value === "count"
+//        ? function() { return 1; }
+//        : function(d) { return d.profit; };
+//    node
+//        .data(treemap.value(value).nodes)
+//      .transition()
+//        .duration(1500)
+//        .call(position);
+//  });
  
 });
 function position() {
