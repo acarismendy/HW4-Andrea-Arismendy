@@ -53,7 +53,7 @@ d3.csv("coffee.csv", function(root) {
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
-      .nodes(nest);
+      .nodes(nest)
       .value(function(d) { return nest.profit; });
       
   var node = div.datum(nest).selectAll(".node")
