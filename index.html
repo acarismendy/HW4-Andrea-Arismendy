@@ -55,7 +55,7 @@ d3.csv("coffee.csv", function(root) {
       .sticky(true)
       .value(function(d) { return nest.profit; });
   var node = div.datum(nest).selectAll(".node")
-      .data(treemap.nodes)
+      .nodes(nest)
       .enter().append("div")
       .attr("class", "node")
       .call(position)
