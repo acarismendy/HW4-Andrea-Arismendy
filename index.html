@@ -61,8 +61,8 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.key ? color(d.values.values.profit) : null; })
-      .text(function(d) { return d.key ? null : d.values.values.profit; });
+      .style("background", function(d) { return  d.key ? color(d.profit) : null; })
+      .text(function(d) { return d.key ? null : d.profit; });
       console.log(node);
       console.log(treemap);
   d3.selectAll("input").on("change", function change() {
