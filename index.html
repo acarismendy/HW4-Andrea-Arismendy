@@ -71,14 +71,14 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.values ? color(d.values.values) : null; })
-      .text(function(d) { return d.values ? null : d.values.values; });
+      .style("background", function(d) { return  d.name ? color(d.children) : null; })
+      .text(function(d) { return d.name ? null : d.children; });
       console.log(nest1);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "count"
         ? function() { return 1; }
-        : function(d) { return d.profit; };
+        : function(d) { return d.values; };
     node
         .data(treemap.value(value).nodes)
         .transition()
