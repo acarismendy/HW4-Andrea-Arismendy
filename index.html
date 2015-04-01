@@ -48,7 +48,7 @@ d3.csv("coffee.csv", function(root) {
           return parseFloat(d.profit)
         })};
       })
-      .entries(root);
+      .map(root);
       
               
   //var nest=nest1.filter(function(d){return d.key==="Central";})    
@@ -56,7 +56,7 @@ d3.csv("coffee.csv", function(root) {
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
-      .children(function(d){return d.state;})
+      //.children(function(d){return d.state;})
       .value(function(d) { return d.profit; });
       
   var node = div.datum(nest).selectAll(".node")
@@ -64,8 +64,8 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.key ? color(d.key) : null; })
-      .text(function(d) { return d.key ? null : d.key; });
+      .style("background", function(d) { return  d.Central ? color(d.CO) : null; })
+      .text(function(d) { return d.Central ? null : d.CO; });
       console.log(node);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
