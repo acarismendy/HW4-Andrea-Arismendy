@@ -40,7 +40,7 @@ var div = d3.select("body").append("div")
     .style("top", margin.top + "px");
   
 d3.csv("coffee.csv", function(root) {
-  var nest1=d3.nest()
+  var nest=d3.nest()
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
       .rollup(function(leaves){
@@ -48,15 +48,8 @@ d3.csv("coffee.csv", function(root) {
           return parseFloat(d.profit)
         })};
       })
-      .entries(root);
+      .map(root);
       
-      var nest = { "name": "Region", "children":
-        nest1.values.map( function(state){
-
-            return { "name": state.key, "children": state.values};
-                   }) 
-                 };
-
               
   //var nest=nest1.filter(function(d){return d.key==="Central";})    
       
