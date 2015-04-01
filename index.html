@@ -43,16 +43,17 @@ d3.csv("coffee.csv", function(root) {
   var nest=d3.nest()
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
-     // .rollup(function(leaves){
-    //    return {"profit":d3.sum(leaves,function(d){
-    //      return parseFloat(d.profit);
-    //    })};
-      //})
+      .rollup(function(leaves){
+        return {"profit":d3.sum(leaves,function(d){
+          return parseFloat(d.profit);
+        })};
+      })
       .entries(root);
       
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
+      .children(state)
       .value(function(d) { return d.profit; });
       
   var node = div.datum(nest).selectAll(".node")
