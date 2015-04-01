@@ -64,7 +64,7 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  color(d.key) : null };)
+      .style("background", function(d) { return  d.key ? color(d.key) : null; })
       .text(function(d) { return d.key ? null : d.key; });
       console.log(node);
       console.log(nest);
