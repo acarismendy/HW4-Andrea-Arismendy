@@ -40,7 +40,7 @@ var div = d3.select("body").append("div")
     .style("top", margin.top + "px");
   
 d3.csv("coffee.csv", function(root) {
-  var nest=d3.nest()
+  var nest1=d3.nest()
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
       .rollup(function(leaves){
@@ -49,6 +49,7 @@ d3.csv("coffee.csv", function(root) {
         })};
       })
       .entries(root);
+  var nest=nest1.filter(function(d){return d.region==="Central";})    
       
   var treemap = d3.layout.treemap()
       .size([width, height])
