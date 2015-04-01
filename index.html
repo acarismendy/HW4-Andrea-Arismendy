@@ -48,7 +48,7 @@ d3.csv("coffee.csv", function(root) {
           return parseFloat(d.profit)
         })};
       })
-      .map(root);
+      .entries(root);
       
               
   //var nest=nest1.filter(function(d){return d.key==="Central";})    
@@ -64,8 +64,8 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.Central ? color(d.profit) : null; })
-      .text(function(d) { return d.Central ? null : d.CO; });
+      .style("background", function(d) { return  d.key ? color(d.profit) : null; })
+      .text(function(d) { return d.key ? null : d.profit; });
       console.log(node);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
