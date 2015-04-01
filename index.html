@@ -64,14 +64,14 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.name ? color(d.children) : null; })
-      .text(function(d) { return d.name ? null : d.children; });
+      .style("background", function(d) { return  d.region ? color(d.state) : null; })
+      .text(function(d) { return d.region ? null : d.state; });
       console.log(node);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "count"
         ? function() { return 1; }
-        : function(d) { return d.values; };
+        : function(d) { return d.profit; };
     node
         .data(treemap.value(value).nodes)
         .transition()
