@@ -40,7 +40,7 @@ var div = d3.select("body").append("div")
     .style("top", margin.top + "px");
   
 d3.csv("coffee.csv", function(root) {
-  var nest1=d3.nest()
+  var nest=d3.nest()
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
       .rollup(function(leaves){
@@ -49,7 +49,7 @@ d3.csv("coffee.csv", function(root) {
         })};
       })
       .entries(root);
-  var nest=nest1.filter(function(d){return d.key==="Central";})    
+  //var nest=nest1.filter(function(d){return d.key==="Central";})    
       
   var treemap = d3.layout.treemap()
       .size([width, height])
@@ -62,8 +62,8 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.region ? color(d.state) : null; })
-      .text(function(d) { return d.region ? null : d.state; });
+      .style("background", function(d) { return  d.values ? color(d.values.values) : null; })
+      .text(function(d) { return d.values ? null : d.values.values; });
       console.log(nest1);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
