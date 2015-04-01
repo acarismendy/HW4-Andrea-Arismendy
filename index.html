@@ -33,7 +33,7 @@ var margin = {top: 40, right: 10, bottom: 10, left: 10},
 var color = d3.rgb();
 
 var div = d3.select("body").append("div")
-    //.style("position", "relative")
+    .style("position", "relative")
     .style("width", (width + margin.left + margin.right) + "px")
     .style("height", (height + margin.top + margin.bottom) + "px")
     .style("left", margin.left + "px")
@@ -54,7 +54,7 @@ d3.csv("coffee.csv", function(root) {
       .size([width, height])
       .sticky(true)
       .nodes(nest);
-     // .value(function(d) { return d.profit; });
+      .value(function(d) { return d.profit; });
       
   var node = div.datum(nest).selectAll(".node")
       .data(treemap)
