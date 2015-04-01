@@ -53,7 +53,7 @@ d3.csv("coffee.csv", function(root) {
       var nest = { "name": "Region", "children":
         nest1.values.map( function(state){
 
-            return { "name": state.key, "children": state.values;}
+            return { "name": state.key, "children": state.values};
                    }) 
                  };
 
