@@ -67,7 +67,9 @@ d3.csv("coffee.csv", function(root) {
       .call(position)
       .style("background", function(d) { return  d._data_ ? color(d.profit) : null; })
       .text(function(d) { return d._data_ ? null : d.profit; });
-      console.log(node);
+      
+  var node2=node[0];
+      console.log(node2);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "count"
