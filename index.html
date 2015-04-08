@@ -70,7 +70,7 @@ d3.csv("coffee.csv", function(root) {
       
   var node2=node[0][0];
       console.log(node);
-      console.log(nest[0]);
+      console.log(nest);
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "count"
         ? function() { return 1; }
