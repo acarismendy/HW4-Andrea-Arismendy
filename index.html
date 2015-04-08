@@ -41,7 +41,7 @@ var div = d3.select("body").append("div")
   
 d3.csv("coffee.csv", function(root) {
   var nest=d3.nest()
-      .key(function(){return rootNode;})
+      .key(function(){return "rootNode";})
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
       .rollup(function(leaves){
