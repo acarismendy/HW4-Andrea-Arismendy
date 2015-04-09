@@ -80,7 +80,8 @@ d3.csv("coffee.csv", function(root) {
       
   var node = div.datum(nest[0]).selectAll(".node")
       .data(treemap)
-      .enter().append("div")
+      .transition()
+      .duration(2500)
       .attr("class", "node")
       .call(position)
       .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
