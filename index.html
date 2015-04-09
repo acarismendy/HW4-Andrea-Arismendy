@@ -22,8 +22,8 @@ form {
 }
 </style>
 <form>
-  <label><input type="radio" name="mode" value="profit" checked> Size</label>
-  <label><input type="radio" name="mode" value="sales"> Count</label>
+  <label><input type="radio" name="mode" value="profit" checked> Profit</label>
+  <label><input type="radio" name="mode" value="sales"> Sales</label>
 </form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -63,7 +63,7 @@ d3.csv("coffee.csv", function(root) {
       console.log(node);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
-    var value = this.value === "count"
+    var value = this.value === "sales"
         ? function() { return d.profit; }
         : function(d) { return d.sales; };
     node
