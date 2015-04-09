@@ -63,13 +63,8 @@ d3.csv("coffee.csv", function(root) {
       console.log(node);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
-    var variable= function(){
-                        if(this.value === "profit"){
-                          return function(d) { return d.profit; };
-                        }
-                        else{
-                          return function(d) { return d.sales-d.profit; };
-                        };}
+    var variable= this.value === "profit" ? function(d) { return d.profit; } : function(d) { return d.sales; };
+                      
         
     var treemap = d3.layout.treemap()
       .size([width, height])
