@@ -46,19 +46,19 @@ d3.csv("coffee.csv", function(root) {
       .key(function(d){return d.state;})
       .entries(root);
     
-  //var treemap = d3.layout.treemap()
-  //    .size([width, height])
-  //    .sticky(true)
-  //    .children(function(d){return d.values;})
-  //    .value(function(d) { return +d.profit; })
-  //    .nodes(nest[0]);
+  var treemap = d3.layout.treemap()
+      .size([width, height])
+      .sticky(true)
+      .children(function(d){return d.values;})
+      .value(function(d) { return +d.profit; })
+      .nodes(nest[0]);
       
-  //var node = div.datum(nest[0]).selectAll(".node")
-  //    .data(treemap)
-  //    .enter().append("div")
-  //    .attr("class", "node")
-  //    .call(position)
-  //    .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
+  var node = div.datum(nest[0]).selectAll(".node")
+      .data(treemap)
+      .enter().append("div")
+      .attr("class", "node")
+      .call(position)
+      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
       
   //    console.log(node);
   //    console.log(nest);
