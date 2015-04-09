@@ -69,7 +69,7 @@ d3.csv("coffee.csv", function(root) {
        .on("mouseover",function(d){
           div1.transition()
           .duration(200)
-          .text("hey"+nest[0][0]);//function(d){return "Region: "+d.region+"\n"+"State: "+d.state+"\n"+"Value: "+d.profit});
+          .text(function(d){return "Region: "+d.region+"\n"+"State: "+d.state+"\n"+"Value: "+d.profit});
       console.log(node);
       console.log(nest[0]);
   d3.selectAll("input").on("change", function change() {
