@@ -63,11 +63,12 @@ d3.csv("coffee.csv", function(root) {
       console.log(node);
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
-    
-    node
-        .data(treemap.value( this.value === "sales"
+    var variable=this.value === "sales"
         ? function(d) { return d.profit; }
-        : function(d) { return d.sales; }).nodes)
+        : function(d) { return d.sales; };
+        console.log(variable);
+    node
+        .data(treemap.value(variable).nodes)
         .transition()
         .duration(1500)
         .call(position);
