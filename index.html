@@ -21,10 +21,10 @@ form {
   text-indent: 2px;
 }
 </style>
-<!--<form>
-  <label><input type="radio" name="mode" value="size" checked> Size</label>
-  <label><input type="radio" name="mode" value="count"> Count</label>
-</form>-->
+<form>
+  <label><input type="radio" name="mode" value="profit" checked> Size</label>
+  <label><input type="radio" name="mode" value="sales"> Count</label>
+</form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
@@ -62,16 +62,16 @@ d3.csv("coffee.csv", function(root) {
       
       console.log(node);
       console.log(nest);
-  //d3.selectAll("input").on("change", function change() {
-    //var value = this.value === "count"
-      //  ? function() { return 1; }
-      //  : function(d) { return d.profit; };
-   // node
-     //   .data(treemap.value(value).nodes)
-       // .transition()
-        //.duration(1500)
-        //.call(position);
-  //});
+  d3.selectAll("input").on("change", function change() {
+    var value = this.value === "count"
+        ? function() { return d.profit; }
+        : function(d) { return d.sales; };
+    node
+        .data(treemap.value(value).nodes)
+        .transition()
+        .duration(1500)
+        .call(position);
+  });
   
         node.on("mouseover", function() {
             d3.select(this)
