@@ -79,6 +79,16 @@ d3.csv("coffee.csv", function(root) {
         .duration(1500)
         .call(position);
   });
+  var childEnterTransition = childrenCells.enter()
+        .append("g")
+        .attr("class", "cell child")
+        .on("mouseover", function() {
+            this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
+            d3.select(this)
+                .attr("filter", "url(#outerDropShadow)")
+                .select(".background")
+                .style("stroke", "#000000");
+        })
  
 });
 function position() {
