@@ -70,7 +70,7 @@ d3.csv("coffee.csv", function(root) {
                         else{
                           return function(d) { return d.sales; };
                         };}
-        console.log(variable);
+        
     var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
@@ -85,15 +85,9 @@ d3.csv("coffee.csv", function(root) {
       .attr("class", "node")
       .call(position)
       .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
+      
+      console.log(node);
   });
-  
-        node.on("mouseover", function() {
-            d3.select(this)
-                .attr("filter", "url(#outerDropShadow)")
-                .select(".background")
-                .style("stroke", "#000000");
-        })
- 
 });
 function position() {
   this.style("left", function(d) { return d.x + "px"; })
