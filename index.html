@@ -70,8 +70,8 @@ d3.csv("coffee.csv", function(root) {
           div1.transition()
           .duration(200)
           .text("hey"+nest[0][0]);//function(d){return "Region: "+d.region+"\n"+"State: "+d.state+"\n"+"Value: "+d.profit});
-  //    console.log(node);
-  //    console.log(nest);
+      console.log(node);
+      console.log(nest[0]);
   d3.selectAll("input").on("change", function change() {
     var variable= this.value === "profit" ? function(d) { return d.profit; } : function(d) { return d.sales; };
                       
