@@ -44,11 +44,6 @@ d3.csv("coffee.csv", function(root) {
       .key(function(){return "rootNode";})
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
-      //.rollup(function(leaves){
-        //return {"profit":d3.sum(leaves,function(d){
-          //return parseFloat(d.profit)
-        //})};
-      //})
       .entries(root);
     
   var treemap = d3.layout.treemap()
@@ -63,8 +58,7 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); })
-      .append("title").text(function(d) { return "Region: "+d.region+"State: "+ d.state + "Profit: "+d.profit});
+      .style("background", function(d) { return  d.children ?  null:color(d.profit); });
       
   var node2=node[0][0];
       console.log(node);
