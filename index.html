@@ -50,10 +50,7 @@ d3.csv("coffee.csv", function(root) {
         //})};
       //})
       .entries(root);
-      
-              
-  //var nest=nest1.filter(function(d){return d.key==="Central";})    
-      
+    
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
@@ -67,7 +64,7 @@ d3.csv("coffee.csv", function(root) {
       .attr("class", "node")
       .call(position)
       .style("background", function(d) { return  d.children ?  null:color(d.parent.key); })
-      .text(function(d) { return d.values ? null : d.profit; });
+      .append("title").text(function(d) { return "Region: "+d.region+"State: "+ d.state + "Profit: "+d.profit});
       
   var node2=node[0][0];
       console.log(node);
