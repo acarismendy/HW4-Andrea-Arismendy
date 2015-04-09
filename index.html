@@ -64,7 +64,7 @@ d3.csv("coffee.csv", function(root) {
       console.log(nest);
   d3.selectAll("input").on("change", function change() {
     var value = this.value === "sales"
-        ? function() { return d.profit; }
+        ? function(d) { return d.profit; }
         : function(d) { return d.sales; };
     node
         .data(treemap.value(value).nodes)
