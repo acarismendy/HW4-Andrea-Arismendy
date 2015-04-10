@@ -89,7 +89,11 @@ d3.csv("coffee.csv", function(root) {
       .duration(2500)
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
+      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); })
+      .on("mouseover",function(d){
+          div1.transition()
+          .duration(200)
+          .text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+variable+"\n"+"Date:"+d.date);
         
   });
  
