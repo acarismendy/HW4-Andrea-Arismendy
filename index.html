@@ -100,7 +100,7 @@ d3.csv("coffee.csv", function(root) {
       .value(function(d) { return +d.profit; })
       .nodes(variable);  
   var node = div.datum(variable).selectAll(".node")
-      .data(treemap.nodes(variable))
+      .data(treemap)
       .transition()
       .duration(2500)
       .attr("class", "node")
