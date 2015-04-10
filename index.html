@@ -65,7 +65,7 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
+      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); })
        .on("mouseover",function(d){
           div1.transition()
           .duration(200)
