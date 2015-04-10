@@ -89,7 +89,7 @@ d3.csv("coffee.csv", function(root) {
       .call(position)
       .style("background", function(d) { return  d.children ?  null:color(d.parent.key); })
       .on("mouseover",function(d){
-          div1.text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+variable+"\n"+"Date:"+d.date);
+          div1.text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+(d.sales-d.profit)+"\n"+"Date:"+d.date);
           });
    console.log(variable);
   });
