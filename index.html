@@ -70,19 +70,17 @@ d3.csv("coffee.csv", function(root) {
           div1.transition()
           .duration(200)
           .text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+d.profit);
+       });
       console.log(node);
       console.log(nest[0]);
   d3.selectAll("input").on("change", function change() {
     var variable= this.value === "profit" ? function(d) { return d.profit; } : function(d) { return d.sales; };
-                      
-        
     var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
       .value(variable)
       .children(function(d){return d.values;})
       .nodes(nest[0]);
-      
   var node = div.datum(variable).selectAll(".node")
       .data(treemap)
       .transition()
@@ -94,9 +92,7 @@ d3.csv("coffee.csv", function(root) {
           div1.transition()
           .duration(200)
           .text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+variable+"\n"+"Date:"+d.date);
-        
   });
- 
   });
 });
 function position() {
