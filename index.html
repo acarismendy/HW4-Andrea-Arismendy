@@ -55,7 +55,7 @@ var div = d3.select("body").append("div")
       .size([width, height])
       .sticky(true)
       .children(function(d){return d.values;})
-      .value(function(d) { return +d.profit; })
+      .value(function(d) { return +d.profit; });
       
   
 d3.csv("coffee.csv", function(root) {
