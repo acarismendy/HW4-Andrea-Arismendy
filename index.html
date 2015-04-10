@@ -91,7 +91,12 @@ d3.csv("coffee.csv", function(root) {
       console.log(nest[0]);
   d3.selectAll("input").on("change", function change() {
     var variable= this.value === "profit" ? function(d) { return d.values.totalProfit; } : function(d) { return d.values.totalSales; };
-   
+   var treemap = d3.layout.treemap()
+      .size([width, height])
+      .sticky(true)
+      .children(function(d){return d.values;})
+      .value(function(d) { return +d.totalProfit; })
+      .nodes(variable);  
   var node = div.datum(variable).selectAll(".node")
       .data(treemap.nodes(variable))
       .transition()
