@@ -65,12 +65,12 @@ d3.csv("coffee.csv", function(root) {
       .enter().append("div")
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); })
-       .on("mouseover",function(d){
-          div1.transition()
-          .duration(200)
-          .text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+d.profit+"\n"+"Date:"+d.date);
-       });
+      .style("background", function(d) { return  d.children ?  null:color(d.parent.key); });
+     //  .on("mouseover",function(d){
+      //    div1.transition()
+      //    .duration(200)
+      //    .text( "Region:"+d.region+"\n"+"State:"+d.state+"\n"+"Value:"+d.profit+"\n"+"Date:"+d.date);
+       //});
       console.log(node);
       console.log(nest[0]);
   d3.selectAll("input").on("change", function change() {
