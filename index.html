@@ -55,7 +55,7 @@ var div = d3.select("body").append("div")
       .size([width, height])
       .sticky(true)
       .children(function(d){return d.values;})
-      .value(function(d) { return +d.profit; });
+      .value(function(d) { return +d.totalProfit; });
       
   
 d3.csv("coffee.csv", function(root) {
@@ -72,7 +72,7 @@ d3.csv("coffee.csv", function(root) {
  
       
   var node = div.datum(nest[0]).selectAll(".node")
-      .data(treemap.nodes)
+      .data(treemap.nodes(nest[0]))
       .enter().append("div")
       .attr("class", "node")
       .call(position)
@@ -86,14 +86,9 @@ d3.csv("coffee.csv", function(root) {
       console.log(nest[0]);
   d3.selectAll("input").on("change", function change() {
     var variable= this.value === "profit" ? function(d) { return d.values.totalProfit; } : function(d) { return d.values.totalSales; };
-    var treemap = d3.layout.treemap()
-      .size([width, height])
-      .sticky(true)
-      .value(variable)
-      .children(function(d){return d.values;})
-      .nodes(nest[0]);
+   
   var node = div.datum(variable).selectAll(".node")
-      .data(treemap)
+      .data(treemap.nodes(variable))
       .transition()
       .duration(2500)
       .attr("class", "node")
