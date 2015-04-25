@@ -63,7 +63,7 @@ d3.csv("coffee.csv", function(root) {
       .key(function(d){return d.region;})
       .key(function(d){return d.state;})
       .entries(root);
-    
+  console.log(root);  
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
